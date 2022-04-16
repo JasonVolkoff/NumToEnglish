@@ -62,9 +62,7 @@ class ConvertToWords():
         """
         Converts integer to english word equivalent.
         """
-        if self.number == 42:
-            self.resposne = "There's just something about that number."
-        elif self.number == 0:
+        if self.number == 0:
             self.response = self.zero
         else:
             is_negative = self.number < 0
