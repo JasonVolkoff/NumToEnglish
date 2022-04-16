@@ -8,6 +8,7 @@
                 size="sm"
                 variant="success"
                 type="button"
+                :disabled="loading"
                 @click="submitFormGet()"
                 >Submit</b-button
             >
@@ -51,10 +52,7 @@ export default {
             this.loading = true;
             this.getResponse = "";
             axiosInstance
-                .get(
-                    "http://127.0.0.1:8000/api/num_to_english/?number=" +
-                        this.number
-                )
+                .get("num_to_english/?number=" + this.number)
                 .then((response) => {
                     this.loading = false;
 
@@ -62,6 +60,9 @@ export default {
                         this.getResponse = response.data.num_in_english;
                         this.submitFormPost();
                     }
+                })
+                .catch(() => {
+                    this.showErrorToast();
                 });
         },
         async submitFormPost() {
@@ -73,8 +74,11 @@ export default {
                     number: this.number,
                 })
                 .then((response) => {
-                    this.postResponse = response.data.num_in_english;
                     this.loading = false;
+
+                    if (this.handleResponse(response.data)) {
+                        this.postResponse = response.data.num_in_english;
+                    }
                 })
                 .catch(() => {
                     this.showErrorToast();

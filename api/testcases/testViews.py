@@ -81,5 +81,3 @@ class HomeViewTestCase(TestCase):
     def testCanGetTemplate(self):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
-
-        print(dir(response.templates))
