@@ -1,4 +1,4 @@
-from api.constants import INVALID_INPUT, MAX_NUM_TO_INT, NUM_OUT_OF_RANGE
+from api.constants import ERROR_RESPONSE, MAX_NUM_TO_INT, STATUS_RESPONSE
 
 
 class ConvertToWords():
@@ -7,6 +7,7 @@ class ConvertToWords():
     word equivalent.
     """
     response = ""
+    status = STATUS_RESPONSE.OK
     number = None
     small_digits = {
         1: "one",
@@ -54,6 +55,8 @@ class ConvertToWords():
 
         if self.sanitize_number():
             self.convert_to_words()
+        else:
+            self.status = STATUS_RESPONSE.ERROR
 
     def convert_to_words(self):
         """
@@ -94,17 +97,17 @@ class ConvertToWords():
         """
         self.number = self.number.strip()
         if not self.number:
-            self.response = INVALID_INPUT
+            self.response = ERROR_RESPONSE.INVALID_INPUT
             return False
 
         try:
             self.number = int(self.number)
         except ValueError:
-            self.response = INVALID_INPUT
+            self.response = ERROR_RESPONSE.INVALID_INPUT
             return False
 
         if self.number < -MAX_NUM_TO_INT or self.number > MAX_NUM_TO_INT:
-            self.response = NUM_OUT_OF_RANGE
+            self.response = ERROR_RESPONSE.NUM_OUT_OF_RANGE
             return False
 
         return True

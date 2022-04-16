@@ -21,10 +21,3 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
-
-# Django
-db.sqlite3
-static
-var
-__pycache__
-*.pyc
