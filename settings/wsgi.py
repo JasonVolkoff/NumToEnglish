@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'num_to_english.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.settings')
 
 application = get_wsgi_application()
