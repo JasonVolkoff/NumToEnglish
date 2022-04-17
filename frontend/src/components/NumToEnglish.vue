@@ -54,8 +54,6 @@ export default {
             axiosInstance
                 .get("num_to_english/?number=" + this.number)
                 .then((response) => {
-                    this.loading = false;
-
                     if (this.handleResponse(response.data)) {
                         this.getResponse = response.data.num_in_english;
                         this.submitFormPost();
@@ -64,6 +62,7 @@ export default {
                 .catch(() => {
                     this.showErrorToast();
                 });
+            this.loading = false;
         },
         async submitFormPost() {
             this.loading = true;
@@ -74,8 +73,6 @@ export default {
                     number: this.number,
                 })
                 .then((response) => {
-                    this.loading = false;
-
                     if (this.handleResponse(response.data)) {
                         this.postResponse = response.data.num_in_english;
                     }
@@ -83,6 +80,7 @@ export default {
                 .catch(() => {
                     this.showErrorToast();
                 });
+            this.loading = false;
         },
         handleResponse(data) {
             if (data.status == "ok") {
