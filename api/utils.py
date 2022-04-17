@@ -1,4 +1,4 @@
-from api.constants import ERROR_RESPONSE, MAX_NUM_TO_INT, STATUS_RESPONSE
+from api.constants import ERROR_RESPONSE, MAX_NUM_TO_INT, STATUS_RESPONSE, SMALL_DIGITS, LARGE_DIGITS, ZERO
 
 
 class ConvertToWords():
@@ -9,46 +9,9 @@ class ConvertToWords():
     response = ""
     status = STATUS_RESPONSE.OK
     number = None
-    small_digits = {
-        1: "one",
-        2: "two",
-        3: "three",
-        4: "four",
-        5: "five",
-        6: "six",
-        7: "seven",
-        8: "eight",
-        9: "nine",
-        10: "ten",
-        11: "eleven",
-        12: "twelve",
-        13: "thirteen",
-        14: "fourteen",
-        15: "fifteen",
-        16: "sixteen",
-        17: "seventeen",
-        18: "eighteen",
-        19: "nineteen",
-        20: "twenty",
-        30: "thirty",
-        40: "fourty",
-        50: "fifty",
-        60: "sixty",
-        70: "seventy",
-        80: "eighty",
-        90: "ninty",
-    }
-    large_digits = {
-        1000000000000000000000: "sextillion",
-        1000000000000000000: "quintillion",
-        1000000000000000: "quadrillion",
-        1000000000000: "trillion",
-        1000000000: "billion",
-        1000000: "million",
-        1000: "thousand",
-        100: "hundred",
-    }
-    zero = "Zero"
+    small_digits = SMALL_DIGITS
+    large_digits = LARGE_DIGITS
+    zero = ZERO
 
     def __init__(self, number):
         self.number = number
